@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="add"
+  targetNamespace="http://tempuri.org/ns.xsd/add.wsdl"
+  xmlns:tns="http://tempuri.org/ns.xsd/add.wsdl"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="http://tempuri.org/ns.xsd"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="http://tempuri.org/ns.xsd"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="http://tempuri.org/ns.xsd"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </schema>
+
+</types>
+
+<message name="addRequest">
+  <part name="num1" type="xsd:int"/><!-- ns__add::num1 -->
+  <part name="num2" type="xsd:int"/><!-- ns__add::num2 -->
+</message>
+
+<message name="addResponse">
+  <part name="result" element="ns:result"/><!-- ns__add::result -->
+</message>
+
+<portType name="addPortType">
+  <operation name="add">
+    <documentation>Service definition of function ns__add</documentation>
+    <input message="tns:addRequest"/>
+    <output message="tns:addResponse"/>
+  </operation>
+</portType>
+
+<binding name="add" type="tns:addPortType">
+  <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="add">
+    <SOAP:operation style="rpc" soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal" namespace="http://tempuri.org/ns.xsd"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal" namespace="http://tempuri.org/ns.xsd"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="add">
+  <documentation>gSOAP 2.8.53 generated service definition</documentation>
+  <port name="add" binding="tns:add">
+    <SOAP:address location="http://localhost:80"/>
+  </port>
+</service>
+
+</definitions>
